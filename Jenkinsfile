@@ -64,5 +64,10 @@ def deploy_to_environment(String environment){
 }
 
 def execute_api_tests(String environment){
-    echo "tests"
+    echo "Starting API tests execution..."
+    echo "Pulling latest API tests image from registry..."
+    sh "docker pull kristelj/api-tests:latest"
+
+    echo "Executing API tests for ${environment}"
+    sh "docker run --network=host --rm kristelj/api-tests:latest run greetings greetings_${environment}"
 }
