@@ -56,11 +56,11 @@ def deploy_to_environment(String environment){
     sh "docker pull kristelj/python-greetings-app:latest"
 
     echo "Stopping & removing previous docker service..."
-    sh "docker-compose-v1 stop python-greetings-app-${environment}"
-    sh "docker-compose-v1 rm python-greetings-app-${environment}"
+    sh "docker-compose-v1 stop greetings-app-${environment}"
+    sh "docker-compose-v1 rm greetings-app-${environment}"
 
     echo "Starting new docker service..."
-    sh "docker-compose-v1 up -d --rm greetings-app-${environment}"
+    sh "docker-compose-v1 up -d greetings-app-${environment}"
 }
 
 def execute_api_tests(String environment){
