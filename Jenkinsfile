@@ -60,7 +60,7 @@ def deploy_to_environment(String environment){
     sh "docker-compose-v1 rm greetings-app-${environment}"
 
     echo "Starting new docker service..."
-    sh "docker-compose-v1 up greetings-app-${environment}"
+    sh "docker-compose-v1 up -d greetings-app-${environment}"
 }
 
 def execute_api_tests(String environment){
